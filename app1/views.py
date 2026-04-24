@@ -3,7 +3,7 @@ from .models import Resume
 from .forms import ResumeForm
 from django.http import HttpResponse
 from django.template.loader import get_template, render_to_string
-import pdfkit
+# import pdfkit
 from xhtml2pdf import pisa
 from io import BytesIO
 
