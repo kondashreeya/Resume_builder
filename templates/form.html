@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Form</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+        }
+
+        .container {
+            width: 60%;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input, textarea {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 8px;
+        }
+
+        /* ✅ BUTTON GROUP */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* ✅ MEDIUM BUTTON STYLE */
+        .btn {
+            padding: 10px 25px;   /* medium size */
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background: gray;
+        }
+
+        .btn-link {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Resume Form</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <!-- ✅ MEDIUM SIDE-BY-SIDE BUTTONS -->
+        <div class="btn-group">
+
+            <!-- BACK BUTTON -->
+            <a href="{% url 'resume_list' %}" class="btn-link">
+                <button type="button" class="btn">Back</button>
+            </a>
+
+            <!-- SUBMIT BUTTON -->
+            <button type="submit" class="btn">Submit</button>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

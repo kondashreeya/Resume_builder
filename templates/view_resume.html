@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume</title>
+
+<style>
+body{
+    margin:0;
+    padding:0;
+    background:#f4f4f4;
+    font-family:Arial, sans-serif;
+}
+
+.resume-container{
+    width:95%;
+    margin:15px auto;
+    background:#fff;
+    border:2px solid #000;
+    padding:45px 40px 35px 40px;
+    box-sizing:border-box;
+}
+
+h2{
+    margin:0;
+    text-align:center;
+    font-size:30px;
+    font-weight:bold;
+}
+
+.contact{
+    text-align:center;
+    font: size 20px;
+    margin-top:15px;
+    margin-bottom:35px;
+}
+
+.section{
+    margin-bottom:28px;
+}
+
+.section-title{
+    font-size:15px;
+    font-weight:bold;
+    text-transform:uppercase;
+    padding-bottom:6px;
+    border-bottom:2px solid #000;
+    margin-bottom:14px;
+}
+
+.text-block{
+    font-size:15px;
+    line-height:2;
+    white-space:pre-line;
+}
+
+ul{
+    margin:0;
+    padding-left:28px;
+    font-size:15px;
+    line-height:2;
+}
+
+li{
+    margin-bottom:4px;
+}
+
+.btn-container{
+    text-align:center;
+    margin:20px 0;
+}
+
+.btn{
+    background:#000;
+    color:#fff;
+    border:none;
+    padding:10px 20px;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+@media print{
+    .btn-container{
+        display:none;
+    }
+
+    body{
+        background:white;
+    }
+
+    .resume-container{
+        width:100%;
+        margin:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="resume-container">
+
+<h2>{{ resume.name }}</h2>
+
+<div class="contact">
+Email: {{ resume.email }} | Phone: {{ resume.phone }}
+</div>
+
+<div class="section">
+<div class="section-title">CAREER OBJECTIVE</div>
+<div class="text-block">{{ resume.career_objective }}</div>
+</div>
+
+<div class="section">
+<div class="section-title">EDUCATION</div>
+<div class="text-block">{{ resume.education }}</div>
+</div>
+
+<div class="section">
+    <div class="section-title">TECHNICAL SKILLS</div>
+    {% for item in skills_list %}
+    <div class="bullet-line">• {{ item }}</div>
+    {% endfor %}
+</div>
+
+<div class="section">
+<div class="section-title">PROJECTS</div>
+<div class="text-block">{{ resume.projects }}</div>
+</div>
+
+<div class="section">
+<div class="section-title">INTERNSHIPS</div>
+<div class="text-block">{{ resume.internships }}</div>
+</div>
+
+<div class="section">
+    <div class="section-title">CERTIFICATIONS</div>
+    {% for item in certifications_list %}
+    <div class="bullet-line">• {{ item }}</div>
+    {% endfor %}
+</div>
+
+<div class="section">
+    <div class="section-title">INTERPERSONAL SKILLS</div>
+    {% for item in interpersonal_list %}
+    <div class="bullet-line">• {{ item }}</div>
+    {% endfor %}
+</div>
+
+</div>
+
+<div class="btn-container">
+<a href="{% url 'resume_list' %}">
+<button class="btn">Back</button>
+</a>
+</div>
+<script>
+if (window.location.search.includes("print=1")) {
+    window.onload = function () {
+        window.print();
+    };
+}
+</script>
+
+</body>
+</html>
