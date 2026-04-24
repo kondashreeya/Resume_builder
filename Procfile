@@ -1,1 +1,1 @@
-web: gunicorn resume_builder.wsgi
+gunicorn voter_id.wsgi:application

@@ -24,12 +24,7 @@ SECRET_KEY = 'django-insecure-g91@6pwp^5xxnovh6l5%8(f)zh9198tz&u*9&c!sfm9&b^9z23
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = [
-    "resume-builder-1-0bvy.onrender.com",
-    "127.0.0.1",
-    "localhost"
-]
-
+ALLOWED_HOSTS = ['resume-builder-2-sl2w.onrender.com']
 
 # Application definition
 
@@ -85,32 +80,44 @@ WSGI_APPLICATION = 'resume_builder.wsgi.application'
 # }
 
 
-import os 
-if os.environ.get("RENDER"): 
-    # Production (Render + aiven) 
-    DATABASES = { 
-        "default": { 
-            "ENGINE": "django.db.backends.mysql", 
-            "NAME": os.environ.get("MYSQLDATABASE"), 
-            "USER": os.environ.get("MYSQLUSER"), 
-            "PASSWORD": os.environ.get("MYSQLPASSWORD"), 
-            "HOST": os.environ.get("MYSQLHOST"), 
-            "PORT": os.environ.get("MYSQLPORT", "3306"), 
-        } 
-    } 
+# import os 
+# if os.environ.get("RENDER"): 
+#     # Production (Render + aiven) 
+#     DATABASES = { 
+#         "default": { 
+#             "ENGINE": "django.db.backends.mysql", 
+#             "NAME": os.environ.get("MYSQLDATABASE"), 
+#             "USER": os.environ.get("MYSQLUSER"), 
+#             "PASSWORD": os.environ.get("MYSQLPASSWORD"), 
+#             "HOST": os.environ.get("MYSQLHOST"), 
+#             "PORT": os.environ.get("MYSQLPORT", "3306"), 
+#         } 
+#     } 
  
-else: 
-    # Local development 
-    DATABASES = { 
-        "default": { 
-            "ENGINE": "django.db.backends.mysql", 
-            "NAME": "django", 
-            "USER": "root", 
-            "PASSWORD": "shree@444", 
-            "HOST": "localhost", 
-            "PORT": "3306", 
-        } 
-    } 
+# else: 
+#     # Local development 
+#     DATABASES = { 
+#         "default": { 
+#             "ENGINE": "django.db.backends.mysql", 
+#             "NAME": "django", 
+#             "USER": "root", 
+#             "PASSWORD": "shree@444", 
+#             "HOST": "localhost", 
+#             "PORT": "3306", 
+#         } 
+#     } 
+
+import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 
@@ -148,4 +155,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
