@@ -1,3 +1,3 @@
 python manage.py collectstatic --noinput 
 python manage.py migrate --noinput 
-gunicorn resume_bilder.wsgi:application --bind 0.0.0.0:$PORT 
+gunicorn resume_builder.wsgi:application --bind 0.0.0.0:$PORT 
