@@ -9,8 +9,8 @@ from io import BytesIO
 
 
 def resume_list(request):
-    resumes = Resume.objects.all()
-    return render(request, 'resume_list.html', {'resumes': resumes})
+    resume = get_object_or_404(Resume, id=id)
+    return render(request, 'resume_list.html', {'resume': resume})
 
 
 
